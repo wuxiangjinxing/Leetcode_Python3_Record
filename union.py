@@ -29,6 +29,10 @@ class DSU:
             self.par[yr] = xr
             self.rnk[xr] += 1
         return True
+
+class Solution:
+    def yourfunction(self, data):
+        dsu = DSU(len(data))
 	
         
     
