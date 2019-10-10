@@ -3,27 +3,32 @@
 # 684. Redundant Connection
 # 685. Redundant Connection II
 
-# Disjoint union set is a data structure that tracks a set of data partitioned in a number of non-overlapping subsets. The data structure supports find (locate the subset for a given data) and union (combine two subsets) operations.
+# Disjoint union set is a data structure that tracks a set of data partitioned in a number of non-overlapping subsets. 
+# The data structure supports find (locate the subset for a given data) and union (combine two subsets) operations.
+# Union-by-rank: 
 
 class DSU:
     def __init__(self, nodes):
-        self.nodes = nodes
-        self.graph = collections.defaultdict(list)
-    
-    def addEdge(self, u, v):
-        self.graph[u].append(v)
-	
-    def find(self, subsets, i):
-        if subsets[i] == -1:
-            return i
+        self.par = list(range(nodes))
+        self.rnk = [0] * nodes
+
+    def find(self, x):
+        if self.par[x] != x:
+            self.par[x] = self.find(self.par[x])
+        return self.par[x]
+
+    def union(self, x, y):
+        xr, yr = self.find(x), self.find(y)
+        if xr == yr:
+            return False
+        elif self.rnk[xr] < self.rnk[yr]:
+            self.par[xr] = yr
+        elif self.rnk[xr] > self.rnk[yr]:
+            self.par[yr] = xr
         else:
-            return self.find(subsets, subsets[i])
-        
-    def union(self, subsets, x, y):
-        x_set = self.find(subsets,x)
-        y_set = self.find(subsets,y)
-        subsets[x_set] = y_set
-	
+            self.par[yr] = xr
+            self.rnk[xr] += 1
+        return True
 	
         
     
