@@ -1,4 +1,4 @@
-# DFS in matrix
+# DFS find the path with max value in a matrix
 
 def getmaxingrid(self, grid):
     res = 0
