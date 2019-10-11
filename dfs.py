@@ -13,7 +13,7 @@ def getmaxingrid(self, grid):
                 if s > v:
                     v = s
                     path = t
-        grid[i][j] = tmp #This shall be modified based on question
+        grid[i][j] = tmp
         return v + tmp, path | {(i, j)}
     
     for i in range(len(grid)):
