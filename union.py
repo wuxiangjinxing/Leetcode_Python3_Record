@@ -47,6 +47,8 @@ class DSU:
 class Solution:
     def yourfunction(self, data):
         dsu = DSU(len(data))
+	dsu.union(x,y)
+	print(dsu.par)
 	
         
     
