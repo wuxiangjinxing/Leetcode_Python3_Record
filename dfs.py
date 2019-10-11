@@ -8,7 +8,7 @@ def getmaxingrid(self, grid):
         tmp = grid[i][j]
         grid[i][j] = 0 #This shall be modified based on question
         for m,n in [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]:
-            if 0 <= m < len(grid) and 0 <= n < len(grid[0]) and grid[m][n] != 0: # grid
+            if 0 <= m < len(grid) and 0 <= n < len(grid[0]) and grid[m][n] != 0: # grid[m][n] != 0 is provided by question
                 s, t = DFS(grid, m, n)
                 if s > v:
                     v = s
