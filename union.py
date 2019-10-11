@@ -5,8 +5,21 @@
 
 # Disjoint union set is a data structure that tracks a set of data partitioned in a number of non-overlapping subsets. 
 # The data structure supports find (locate the subset for a given data) and union (combine two subsets) operations.
-# Union-by-rank: determine how two subsets are unioned based on their ranks.
+# optional: Union-by-rank: determine how two subsets are unioned based on their ranks.
 
+class DSU:
+    def __init__(self, nodes):
+        self.par = list(range(nodes))
+
+    def find(self, x):
+        if self.par[x] != x:
+            self.par[x] = self.find(self.par[x])
+        return self.par[x]
+
+    def union(self, x, y):
+        self.par[self.find(x)] = self.find(y)
+
+'''
 class DSU:
     def __init__(self, nodes):
         self.par = list(range(nodes))
@@ -29,6 +42,7 @@ class DSU:
             self.par[yr] = xr
             self.rnk[xr] += 1
         return True
+'''
 
 class Solution:
     def yourfunction(self, data):
