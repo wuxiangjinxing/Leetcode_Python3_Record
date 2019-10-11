@@ -1,12 +1,26 @@
 # DFS in matrix
 
-    m, n = len(grid), len(grid[0])
-    self.res = 0
-    def dfs(x, y, val):
-        self.res = max(self.res, val)
-        for i, j in ((x+1, y), (x-1, y), (x, y+1), (x, y-1)):
-            if 0 <= i < m and 0 <= j < n and grid[i][j] != 0: #grid[i][j] != 0 is the rule provided by the question
-                v = grid[i][j]
-                grid[i][j] = 0
-                dfs(i, j, val + v)
-                grid[i][j] = v
+def getmaxingrid(self, grid):
+    res = 0
+    seen = set()
+    def DFS(grid, i, j):
+        v, path = 0, set() ## v:从该节点往后最长路径的值(不包含该节点), path:从该节点往后最长路径(不包含该节点)
+        tmp = grid[i][j]
+        grid[i][j] = 0 #This shall be modified based on question
+        for m,n in [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]:
+            if 0 <= m < len(grid) and 0 <= n < len(grid[0]) and grid[m][n] != 0: # grid
+                s, t = DFS(grid, m, n)
+                if s > v:
+                    v = s
+                    path = t
+        grid[i][j] = tmp #This shall be modified based on question
+        return v + tmp, path | {(i, j)}
+    
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if (i,j) not in seen and grid[i][j] != 0:
+                val, path = DFS(grid, i, j)
+                if val > res:
+                    res = val
+                    seen = path
+    return res
