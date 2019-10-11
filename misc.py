@@ -5,7 +5,7 @@ def printDivisors(n):
     res = []
     list = []
     st = 2 if n % 2 == 0 else 3
-    for i in range(1, int(math.sqrt(n) + 1), 2):   
+    for i in range(st, int(math.sqrt(n) + 1), 2):   
         if (n % i == 0): 
             if (n / i != i):
                 list.append(n//i)
