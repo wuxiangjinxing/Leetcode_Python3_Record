@@ -1,5 +1,8 @@
 # A series of useful small functions
 
+# Remove elements from set
+set.discard(element)
+
 # Combine two iterables using zip()
 a = [1, 2, 3]
 b = [4, 5, 6]
