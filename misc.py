@@ -1,16 +1,18 @@
 # A series of useful small functions
 
 # Find two numbers in a list with the sum % val == 0
-	    counter, res = [0] * (val + 1), 0
-	    for i in range(len(time)):
-		    r = time[i] % val
-		    res += counter[val - r]
-		    if r == 0:
-			    counter[val] += 1
-		    else:
-			    counter[r] += 1
-	    return res
-
+        d = collections.defaultdict(int)
+        for i in nums:
+            d[i % val] += 1
+        
+        ret = 0
+        for k, v in d.items():
+            if k == 0 or k == val // 2:
+                ret += v*(v - 1) // 2
+            elif (val - k) in d and val - k > k:
+                ret += v * d[val - k]
+        
+        return ret
 # Remove elements from set
 set.discard(element)
 
