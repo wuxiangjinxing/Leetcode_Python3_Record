@@ -1,5 +1,16 @@
 # A series of useful small functions
 
+# Find two numbers in a list with the sum % val == 0
+	    counter, res = [0] * (val + 1), 0
+	    for i in range(len(time)):
+		    r = time[i] % val
+		    res += counter[val - r]
+		    if r == 0:
+			    counter[val] += 1
+		    else:
+			    counter[r] += 1
+	    return res
+
 # Remove elements from set
 set.discard(element)
 
