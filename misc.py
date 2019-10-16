@@ -1,5 +1,18 @@
 # A series of useful small functions
 
+# Lagrange's four-square theorem
+        if self.isSquare(n):
+            return 1
+        while (n & 3) == 0:
+            n >>= 2
+        if (n & 7) == 7:
+            return 4
+        sq = int(math.sqrt(n)) + 1
+        for i in range(1,sq):
+            if self.isSquare(n - i*i):
+                return 2
+        return 3
+
 # Find two numbers in a list with the sum % val == 0
         d = collections.defaultdict(int)
         for i in nums:
