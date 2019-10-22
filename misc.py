@@ -1,6 +1,6 @@
 # A series of useful small functions
 
-# Split array into two equal sum
+# Split array into two equal sum subarrays
 def findSplitPoint(arr, n) : 
     # traverse array element and  
     # compute sum of whole array 
