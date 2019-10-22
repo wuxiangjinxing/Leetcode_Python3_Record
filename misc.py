@@ -1,5 +1,35 @@
 # A series of useful small functions
 
+# Split array into two equal sum
+def findSplitPoint(arr, n) : 
+    # traverse array element and  
+    # compute sum of whole array 
+    leftSum = 0
+    for i in range(0, n) : 
+        leftSum += arr[i] 
+   
+    # again traverse array and 
+    # compute right sum and also  
+    # check left_sum equal to  
+    # right sum or not 
+    rightSum = 0
+    for i in range(n-1, -1, -1) : 
+        # add current element 
+        # to right_sum 
+        rightSum += arr[i] 
+   
+        # exclude current element  
+        # to the left_sum 
+        leftSum -= arr[i]  
+   
+        if (rightSum == leftSum) : 
+            return i  
+   
+    # if it is not possible  
+    # to split array into  
+    # two parts. 
+    return -1
+
 # Lagrange's four-square theorem
         if self.isSquare(n):
             return 1
