@@ -1,5 +1,12 @@
 # A series of useful small functions
 
+# Gray code
+# Return an n-bit Gray code.
+# https://cp-algorithms.com/algebra/gray-code.html
+
+def genCode(n):
+    return n ^ (n >> 1)
+
 # Split array into two equal sum subarrays
 def findSplitPoint(arr, n) : 
     # traverse array element and  
