@@ -18,3 +18,15 @@ class Solution:
                 r = mid
         return l
         # return r也是正确的
+
+    def weightedrandompick():
+        ww = self.w # w是权重的累计加和
+        score = random.random() * ww[-1]
+        lo, hi = 0, len(ww)
+        while lo < hi:
+            mid = lo + (hi - lo) // 2
+            if ww[mid] <= score:
+                lo = mid + 1
+            else:
+                hi = mid
+        x = lo
