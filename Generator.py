@@ -4,7 +4,7 @@
 
 def list_or_tuple(x):  
       return isinstance(x, (list, tuple))  
-      
+
 def flatten(sequence, to_expand=list_or_tuple):  
       for item in sequence:  
             if to_expand(item):  
@@ -28,3 +28,9 @@ def flatten(sequence, to_expand=list_or_tuple):
             else:  
                   # 最深嵌套的迭代器耗尽，回过头来循环它的父迭代器  
                   iterators.pop( ) 
+                  
+# 生成器调用
+def Solution():
+      res = []
+      for x in flattern(sequence):
+            res.append(x)
